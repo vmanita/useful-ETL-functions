@@ -78,25 +78,3 @@ df.groupBy('key').agg(f.collect_set('feature').alias('name'))
 # Listar todos os valores com repetições (list)
 df.groupBy('key').agg(f.collect_list('feature').alias('name'))
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
