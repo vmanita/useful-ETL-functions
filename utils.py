@@ -1,5 +1,5 @@
 #########################################
-dbutils
+# dbutils
 #########################################
 
 # Listar mountpoints
@@ -12,7 +12,7 @@ dbutils.fs.ls('dbfs:/mnt/edpd/src/exemplo')
 dbutils.fs.rm('dbfs:/mnt/edpd/src/exemplo', recurse = True)
 
 #########################################
-Criar BD's em databricks com ligação ao DL
+# Criar BD's em databricks com ligação ao DL
 #########################################
 
 # Criar uma pasta (bd) no DL com o nome 'raw'
@@ -23,21 +23,21 @@ db_raw = 'raw'
 spark.sql(f'create database if not exists {db_raw} location "{os.path.join(db_location, db_raw)}.db"')
 
 #########################################
-Avro to DataFrame
+# Avro to DataFrame
 #########################################
 
 def ReadAvro(path):
   return spark.read.format("avro").load(path)
   
 #########################################
-Guardar DataFrame na base de dados
+# Guardar DataFrame na base de dados
 #########################################
 
  def SaveDF(df, db, name, write_mode = 'overwrite'):
   df.write.mode(write_mode).format('delta').option('overwriteSchema','true').saveAsTable(f'{db}.{name}')
  
 #########################################
-Consolidar dados (de acordo com uma chave/s e coluna/s de ordenação)
+# Consolidar dados (de acordo com uma chave/s e coluna/s de ordenação)
 #########################################
 
 def ConsolidateDF(df, key, order):
@@ -45,7 +45,7 @@ def ConsolidateDF(df, key, order):
   return df_consolidated
   
 #########################################
-Limpar todos os nomes de colunas de uma tabela (lower, remover pontuação, símbolos, e múltiplos espaços separados por '_')
+# Limpar todos os nomes de colunas de uma tabela (lower, remover pontuação, símbolos, e múltiplos espaços separados por '_')
 #########################################
 
 def CleanFeatureNames(df):
@@ -61,7 +61,7 @@ def CleanFeatureNames(df):
   return df
 
 #########################################
-Adicionar um prefixo a todas as variáveis num DataFrame
+# Adicionar um prefixo a todas as variáveis num DataFrame
 #########################################
 
 def PrefixAdd(df, prefix):
@@ -69,7 +69,7 @@ def PrefixAdd(df, prefix):
   return df
 
 #########################################
-Listar todos os valores para uma chave (Groupby list)
+# Listar todos os valores para uma chave (Groupby list)
 #########################################
 
 # Listar todos os valores unicos (set)
